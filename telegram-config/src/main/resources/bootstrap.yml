@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: telegram-config
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/denk7/final-project-config
+          search-paths: {application}
+
+server:
+  port: 50000
+
