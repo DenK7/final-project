@@ -19,4 +19,19 @@ public class DBServer {
     @Field("server_type")
     private String serverType;
 
+    @Field("server_host")
+    private String serverHost;
+
+    @Field("server_port")
+    private String serverPort;
+
+    @Field("db_name")
+    private String dbName;
+
+    @Field("user_name")
+    private String userName;
+
+    @Field("user_psw")
+    private String userPsw;
+
 }

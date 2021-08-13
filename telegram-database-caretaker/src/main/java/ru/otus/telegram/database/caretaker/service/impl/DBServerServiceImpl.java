@@ -26,35 +26,32 @@ public class DBServerServiceImpl implements DBServerService {
     }
 
     @Override
-    public DBServerModel addDBServer(DBServerModel model) {
-        if (model == null) {
-            throw new DBServerNotCorrectException();
-        }
-        if (dbServerRepositories.findDBServerByServerName(model.getServerName()).isPresent()) {
-            throw new DBServerAlreadyExistException();
-        }
-        return dbServerModelDto.getDbServerModelFromDbServer(dbServerRepositories.save(dbServerModelDto.getDbServerFromDbServerModel(model)));
-    }
-
-    @Override
     public void deleteDBServer(String id) {
         Optional<DBServer> dbServerOptional = dbServerRepositories.findById(id);
         dbServerOptional.ifPresent(dbServerRepositories::delete);
     }
 
     @Override
-    public DBServerModel updateDBServer(DBServerModel model) {
+    public DBServerModel saveDBServer(DBServerModel model) {
         if (model == null) {
             throw new DBServerNotCorrectException();
         }
-        Optional<DBServer> dbServerOptional = dbServerRepositories.findById(model.getId());
-        if (dbServerOptional.isPresent()) {
-            DBServer dbServer = dbServerOptional.get();
-            dbServerModelDto.updateDbServerFromDbServerModel(dbServer, model);
-            DBServer dbServerSave = dbServerRepositories.save(dbServer);
-            return dbServerModelDto.getDbServerModelFromDbServer(dbServerSave);
+        if (model.getId() != null && !model.getId().isEmpty()) {
+            Optional<DBServer> dbServerOptional = dbServerRepositories.findById(model.getId());
+            if (dbServerOptional.isPresent()) {
+                DBServer dbServer = dbServerOptional.get();
+                dbServerModelDto.updateDbServerFromDbServerModel(dbServer, model);
+                DBServer dbServerSave = dbServerRepositories.save(dbServer);
+                return dbServerModelDto.getDbServerModelFromDbServer(dbServerSave);
+            }
+            throw new DBServerNotFoundException();
+        } else {
+            //проверка на дублирование, можно добавить еще критерии
+            if (dbServerRepositories.findDBServerByServerName(model.getServerName()).isPresent()) {
+                throw new DBServerAlreadyExistException();
+            }
+            return dbServerModelDto.getDbServerModelFromDbServer(dbServerRepositories.save(dbServerModelDto.getDbServerFromDbServerModel(model)));
         }
-        throw new DBServerNotFoundException();
     }
 
     @Override

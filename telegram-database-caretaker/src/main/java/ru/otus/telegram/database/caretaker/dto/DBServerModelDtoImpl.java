@@ -12,6 +12,11 @@ public class DBServerModelDtoImpl implements DBServerModelDto{
                 .id(dbServer.getId())
                 .serverName(dbServer.getServerName())
                 .serverType(dbServer.getServerType())
+                .serverHost(dbServer.getServerHost())
+                .serverPort(dbServer.getServerPort())
+                .dbName(dbServer.getDbName())
+                .userName(dbServer.getUserName())
+                .userPsw(dbServer.getUserPsw())
                 .build();
     }
 
@@ -19,6 +24,11 @@ public class DBServerModelDtoImpl implements DBServerModelDto{
     public void updateDbServerFromDbServerModel(DBServer dbServer, DBServerModel model) {
         dbServer.setServerName(model.getServerName());
         dbServer.setServerType(model.getServerType());
+        dbServer.setServerHost(model.getServerHost());
+        dbServer.setServerPort(model.getServerPort());
+        dbServer.setDbName(model.getDbName());
+        dbServer.setUserName(model.getUserName());
+        dbServer.setUserPsw(model.getUserPsw());
     }
 
     @Override
@@ -26,6 +36,11 @@ public class DBServerModelDtoImpl implements DBServerModelDto{
         return DBServer.builder()
                 .serverName(dbServerModel.getServerName())
                 .serverType(dbServerModel.getServerType())
+                .serverHost(dbServerModel.getServerHost())
+                .serverPort(dbServerModel.getServerPort())
+                .dbName(dbServerModel.getDbName())
+                .userName(dbServerModel.getUserName())
+                .userPsw(dbServerModel.getUserPsw())
                 .build();
     }
 }
