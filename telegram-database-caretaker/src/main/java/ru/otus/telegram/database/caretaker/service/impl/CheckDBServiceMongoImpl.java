@@ -30,12 +30,13 @@ public class CheckDBServiceMongoImpl implements CheckDBService, ServerMonitorLis
 
     @Override
     public CheckResult checkDB(DBServerModel dbServerModel) {
-        try {
+
             MongoClientOptions clientOptions = new MongoClientOptions.Builder()
                     .addServerMonitorListener(this)
                     .build();
-            MongoClient client = new MongoClient(new ServerAddress(dbServerModel.getServerHost()
-                    , Integer.parseInt(dbServerModel.getServerPort())), clientOptions);
+        try (MongoClient client = new MongoClient(new ServerAddress(dbServerModel.getServerHost()
+                    , Integer.parseInt(dbServerModel.getServerPort())), clientOptions)) {
+
             MongoDatabase database = client.getDatabase(dbServerModel.getDbName());
             Document commandResultDoc = database.runCommand(new BasicDBObject("hostInfo", 1));
 
