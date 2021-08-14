@@ -43,10 +43,9 @@ public class CheckLogServiceImpl implements CheckLogService {
     }
 
     @Override
-    public List<CheckLogModel> getCheckLogsByDate(String dateFrom, String dateTo) {
-//        List<CheckLog> checkLogList = checkLogRepositories.findAllByCheckDateAfterAndCheckDateBefore(dateFrom, dateTo);
-//        return getListModelFromListCheckLog(checkLogList);
-        return null;
+    public List<CheckLogModel> getCheckLogsByDate(Date dateFrom, Date dateTo) {
+        List<CheckLog> checkLogList = checkLogRepositories.findAllByCheckDateBetween(dateFrom, dateTo);
+        return getListModelFromListCheckLog(checkLogList);
     }
 
     private List<CheckLogModel> getListModelFromListCheckLog(List<ru.otus.telegram.database.caretaker.entity.CheckLog> checkLogList) {

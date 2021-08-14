@@ -9,5 +9,6 @@ import java.util.List;
 
 public interface CheckLogRepositories extends MongoRepository<CheckLog, String> {
 
-    List<CheckLog> findAllByCheckDateAfterAndCheckDateBefore(Date dateFrom, Date dateTo);
+    @Query("{'check_date': {$gte: ?0, $lte:?1 }}")
+    List<CheckLog> findAllByCheckDateBetween(Date dateFrom, Date dateTo);
 }
