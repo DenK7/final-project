@@ -1,12 +1,12 @@
 package ru.otus.telegram.database.caretaker.service.impl;
 
 import org.springframework.stereotype.Service;
+import ru.otus.telegram.data.model.DBServerModel;
 import ru.otus.telegram.database.caretaker.dto.DBServerModelDto;
 import ru.otus.telegram.database.caretaker.entity.DBServer;
 import ru.otus.telegram.database.caretaker.exception.DBServerAlreadyExistException;
 import ru.otus.telegram.database.caretaker.exception.DBServerNotCorrectException;
 import ru.otus.telegram.database.caretaker.exception.DBServerNotFoundException;
-import ru.otus.telegram.database.caretaker.model.DBServerModel;
 import ru.otus.telegram.database.caretaker.repositories.DBServerRepositories;
 import ru.otus.telegram.database.caretaker.service.api.DBServerService;
 
@@ -55,8 +55,8 @@ public class DBServerServiceImpl implements DBServerService {
     }
 
     @Override
-    public DBServerModel getDBServerById(String id) {
-        Optional<DBServer> dbServerOptional = dbServerRepositories.findById(id);
+    public DBServerModel getDBServerByName(String name) {
+        Optional<DBServer> dbServerOptional = dbServerRepositories.findDBServerByServerName(name);
         if (dbServerOptional.isPresent()) {
             return dbServerModelDto.getDbServerModelFromDbServer(dbServerOptional.get());
         }

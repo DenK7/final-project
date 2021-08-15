@@ -1,16 +1,15 @@
-package ru.otus.telegram.database.caretaker.model;
+package ru.otus.telegram.data.model;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Date;
 
 @Builder
-@Getter
-@Setter
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @ApiModel(description = "Результат опроса сервера")
 public class CheckResult {
 

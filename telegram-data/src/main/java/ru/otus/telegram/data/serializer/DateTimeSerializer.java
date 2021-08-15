@@ -1,4 +1,4 @@
-package ru.otus.telegram.database.caretaker.service;
+package ru.otus.telegram.data.serializer;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;

@@ -1,10 +1,10 @@
 package ru.otus.telegram.database.caretaker.dto;
 
 import org.springframework.stereotype.Component;
+import ru.otus.telegram.data.model.CheckLogModel;
+import ru.otus.telegram.data.model.CheckResult;
+import ru.otus.telegram.data.model.DBServerModel;
 import ru.otus.telegram.database.caretaker.entity.CheckLog;
-import ru.otus.telegram.database.caretaker.model.CheckLogModel;
-import ru.otus.telegram.database.caretaker.model.CheckResult;
-import ru.otus.telegram.database.caretaker.model.DBServerModel;
 
 @Component
 public class CheckLogDtoImpl implements CheckLogDto {

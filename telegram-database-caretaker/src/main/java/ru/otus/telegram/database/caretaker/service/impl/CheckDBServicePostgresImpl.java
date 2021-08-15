@@ -1,8 +1,8 @@
 package ru.otus.telegram.database.caretaker.service.impl;
 
 import org.springframework.stereotype.Service;
-import ru.otus.telegram.database.caretaker.model.CheckResult;
-import ru.otus.telegram.database.caretaker.model.DBServerModel;
+import ru.otus.telegram.data.model.CheckResult;
+import ru.otus.telegram.data.model.DBServerModel;
 import ru.otus.telegram.database.caretaker.service.api.CheckDBService;
 import ru.otus.telegram.database.caretaker.service.api.CheckLogService;
 

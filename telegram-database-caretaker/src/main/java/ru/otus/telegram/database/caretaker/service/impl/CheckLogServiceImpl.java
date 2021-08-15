@@ -1,11 +1,11 @@
 package ru.otus.telegram.database.caretaker.service.impl;
 
 import org.springframework.stereotype.Service;
+import ru.otus.telegram.data.model.CheckLogModel;
+import ru.otus.telegram.data.model.CheckResult;
+import ru.otus.telegram.data.model.DBServerModel;
 import ru.otus.telegram.database.caretaker.dto.CheckLogDto;
 import ru.otus.telegram.database.caretaker.entity.CheckLog;
-import ru.otus.telegram.database.caretaker.model.CheckLogModel;
-import ru.otus.telegram.database.caretaker.model.CheckResult;
-import ru.otus.telegram.database.caretaker.model.DBServerModel;
 import ru.otus.telegram.database.caretaker.repositories.CheckLogRepositories;
 import ru.otus.telegram.database.caretaker.service.api.CheckLogService;
 

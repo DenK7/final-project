@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-import ru.otus.telegram.database.caretaker.model.CheckResult;
+import ru.otus.telegram.data.model.CheckResult;
 import ru.otus.telegram.database.caretaker.service.api.CaretakerService;
 
 import java.util.List;
@@ -27,10 +27,10 @@ public class CaretakerController {
     }
 
     @ApiOperation(value = "Проверка сервера по id", response = CheckResult.class)
-    @GetMapping("/caretaker/check/{id}")
-    public ResponseEntity<CheckResult> getByServerId (
-            @ApiParam("Код сервера")
-            @PathVariable String id) {
-        return ResponseEntity.ok(caretakerService.checkDB(id));
+    @GetMapping("/caretaker/check/{name}")
+    public ResponseEntity<CheckResult> checkByDBServerName (
+            @ApiParam("Имя сервера")
+            @PathVariable String name) {
+        return ResponseEntity.ok(caretakerService.checkDB(name));
     }
 }

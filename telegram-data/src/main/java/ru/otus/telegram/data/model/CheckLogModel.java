@@ -1,20 +1,21 @@
-package ru.otus.telegram.database.caretaker.model;
+package ru.otus.telegram.data.model;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.mongodb.core.mapping.Field;
+
+import java.util.Date;
 
 @Builder
 @Getter
 @Setter
-@ApiModel(description = "Описание сервера")
-public class DBServerModel {
+@ApiModel(description = "Лог опроса сервера")
+public class CheckLogModel {
     @ApiModelProperty(value = "код")
     private String id;
-    @ApiModelProperty(value = "Краткое наименование")
+    @ApiModelProperty(value = "Имя сервера")
     private String serverName;
     @ApiModelProperty(value = "Тип сбазы данных (mongodb, postgresql)")
     private String serverType;
@@ -24,9 +25,10 @@ public class DBServerModel {
     private String serverPort;
     @ApiModelProperty(value = "имя базы данных / если не обходимо")
     private String dbName;
-    @ApiModelProperty(value = "login / если не обходимо")
-    private String userName;
-    @ApiModelProperty(value = "password / если не обходимо")
-    private String userPsw;
-
+    @ApiModelProperty(value = "Дата опроса")
+    private Date checkDate;
+    @ApiModelProperty(value = "Результат опроса")
+    private Boolean isWorking;
+    @ApiModelProperty(value = "Результат опроса")
+    private String checkResult;
 }

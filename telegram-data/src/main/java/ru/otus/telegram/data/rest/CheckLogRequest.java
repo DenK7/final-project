@@ -1,11 +1,11 @@
-package ru.otus.telegram.database.caretaker.controller.model;
+package ru.otus.telegram.data.rest;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
-import ru.otus.telegram.database.caretaker.service.DateTimeSerializer;
+import ru.otus.telegram.data.serializer.DateTimeSerializer;
 
 import java.util.Date;
 

@@ -4,7 +4,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.otus.telegram.database.caretaker.model.DBServerModel;
+import ru.otus.telegram.data.model.DBServerModel;
 import ru.otus.telegram.database.caretaker.service.api.DBServerService;
 
 import java.util.List;
@@ -36,11 +36,11 @@ public class DBServerController {
     }
 
     @ApiOperation(value = "Получение сервера для мониторинга", response = DBServerModel.class)
-    @GetMapping("/dbserver/server/{id}")
-    public ResponseEntity<DBServerModel> getByServerId (
-            @ApiParam("Код сервера")
-            @PathVariable String id) {
-        return ResponseEntity.ok(dbServerService.getDBServerById(id));
+    @GetMapping("/dbserver/server/{name}")
+    public ResponseEntity<DBServerModel> getByServerName (
+            @ApiParam("Имя сервера")
+            @PathVariable String name) {
+        return ResponseEntity.ok(dbServerService.getDBServerByName(name));
     }
 
     @ApiOperation(value = "Получение серверов для мониторинга", response = DBServerModel.class)

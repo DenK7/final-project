@@ -1,9 +1,9 @@
 package ru.otus.telegram.database.caretaker.service.impl;
 
 import org.springframework.stereotype.Service;
+import ru.otus.telegram.data.model.CheckResult;
+import ru.otus.telegram.data.model.DBServerModel;
 import ru.otus.telegram.database.caretaker.exception.CheckDBNotCorrectException;
-import ru.otus.telegram.database.caretaker.model.CheckResult;
-import ru.otus.telegram.database.caretaker.model.DBServerModel;
 import ru.otus.telegram.database.caretaker.service.api.CaretakerService;
 import ru.otus.telegram.database.caretaker.service.api.CheckDBService;
 import ru.otus.telegram.database.caretaker.service.api.DBServerService;
@@ -35,8 +35,8 @@ public class CaretakerServiceImpl implements CaretakerService {
     }
 
     @Override
-    public CheckResult checkDB(String dbServerModelId) {
-        DBServerModel dbServerModel = dbServerService.getDBServerById(dbServerModelId);
+    public CheckResult checkDB(String dbServerModelName) {
+        DBServerModel dbServerModel = dbServerService.getDBServerByName(dbServerModelName);
         return checkOneDB(dbServerModel);
     }
 

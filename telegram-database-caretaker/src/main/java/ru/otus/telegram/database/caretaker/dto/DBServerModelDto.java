@@ -1,7 +1,7 @@
 package ru.otus.telegram.database.caretaker.dto;
 
+import ru.otus.telegram.data.model.DBServerModel;
 import ru.otus.telegram.database.caretaker.entity.DBServer;
-import ru.otus.telegram.database.caretaker.model.DBServerModel;
 
 public interface DBServerModelDto {
     DBServerModel getDbServerModelFromDbServer(DBServer dbServer);
