@@ -71,5 +71,4 @@ public class ExternalServiceImpl implements ExternalService{
                 "; Date check: " +checkResult.getCheckDate()+
                 "; Result: "+checkResult.getIsWorking().toString().toUpperCase(Locale.ROOT));
     }
-
 }
