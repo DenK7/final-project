@@ -9,6 +9,8 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 import ru.otus.telegram.bot.service.BotService;
 
+import javax.annotation.PostConstruct;
+
 @Component
 public class BotInit {
 
@@ -18,7 +20,7 @@ public class BotInit {
         this.botService = botService;
     }
 
-    @EventListener({ContextRefreshedEvent.class})
+    @PostConstruct
     public void Init() throws TelegramApiException {
         TelegramBotsApi telegramBotsApi = new TelegramBotsApi(DefaultBotSession.class);
         try {

@@ -40,8 +40,8 @@ public class ExternalServiceImpl implements ExternalService{
     }
 
     private String getStringDBServer(DBServerModel dbServerModel) {
-        return new String(" -> Server name: "+dbServerModel.getServerName()+
-                "; Server host: "+dbServerModel.getServerHost()+"; Server type: "+dbServerModel.getServerType());
+        return " -> Server name: " + dbServerModel.getServerName() +
+                "; Server host: " + dbServerModel.getServerHost() + "; Server type: " + dbServerModel.getServerType();
     }
 
     @Override
@@ -66,9 +66,10 @@ public class ExternalServiceImpl implements ExternalService{
     }
 
     private String getStringCheckResult(CheckResult checkResult) {
-        return new String(" -> Server name: "+checkResult.getServerName()+
-                "; Server host: "+checkResult.getServerHost()+"; Server type: "+checkResult.getServerType()+
-                "; Date check: " +checkResult.getCheckDate()+
-                "; Result: "+checkResult.getIsWorking().toString().toUpperCase(Locale.ROOT));
+        return " -> Server name: " + checkResult.getServerName() +
+                "; Server host: " + checkResult.getServerHost() + "; Server type: " + checkResult.getServerType() +
+                "; Date check: " + checkResult.getCheckDate() +
+                "; Result: " + checkResult.getIsWorking().toString().toUpperCase(Locale.ROOT) +
+                (checkResult.getIsWorking() ? "" : "Ошибка: " + checkResult.getCheckResult());
     }
 }

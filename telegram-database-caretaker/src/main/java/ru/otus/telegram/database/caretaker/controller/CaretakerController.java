@@ -31,6 +31,8 @@ public class CaretakerController {
     public ResponseEntity<CheckResult> checkByDBServerName (
             @ApiParam("Имя сервера")
             @PathVariable String name) {
-        return ResponseEntity.ok(caretakerService.checkDB(name));
+        CheckResult checkResult = caretakerService.checkDB(name);
+        System.out.println(checkResult.getIsWorking());
+        return ResponseEntity.ok(checkResult);
     }
 }

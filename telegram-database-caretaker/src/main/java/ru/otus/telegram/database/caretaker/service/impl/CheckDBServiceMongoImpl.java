@@ -33,6 +33,9 @@ public class CheckDBServiceMongoImpl implements CheckDBService, ServerMonitorLis
 
             MongoClientOptions clientOptions = new MongoClientOptions.Builder()
                     .addServerMonitorListener(this)
+                    .connectTimeout(1000)
+                    .socketTimeout(1000)
+                    .serverSelectionTimeout(1000)
                     .build();
         try (MongoClient client = new MongoClient(new ServerAddress(dbServerModel.getServerHost()
                     , Integer.parseInt(dbServerModel.getServerPort())), clientOptions)) {

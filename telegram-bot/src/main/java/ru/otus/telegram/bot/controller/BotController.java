@@ -6,9 +6,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import ru.otus.telegram.bot.service.SendMessageService;
 
 @RestController
 public class BotController {
+
+    private final SendMessageService sendMessageService;
+
+    public BotController(SendMessageService sendMessageService) {
+        this.sendMessageService = sendMessageService;
+    }
 
     @ApiOperation(value = "Отправка сообщения в телеграм")
     @PostMapping("/send-message")
@@ -19,7 +26,7 @@ public class BotController {
             return ResponseEntity.ok().build();
         }
 
-        System.out.println(message);
+        sendMessageService.sendMessage(message);
         return ResponseEntity.ok().build();
     }
 }

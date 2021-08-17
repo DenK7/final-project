@@ -30,7 +30,8 @@ public class BotService extends TelegramLongPollingBot {
 
     @Override
     public void onUpdateReceived(Update update) {
-        SendMessage.SendMessageBuilder builder =SendMessage.builder();
+        update.getUpdateId();
+        SendMessage.SendMessageBuilder builder = SendMessage.builder();
         String messageText;
         String chatId;
         if (update.getMessage() != null) {
@@ -52,8 +53,10 @@ public class BotService extends TelegramLongPollingBot {
                 builder.text(externalService.getDBServerByServerName(messageText.substring(12)));
             } else if (messageText.contains("/checkall")) {
                 builder.text(externalService.checkAll());
-            } else if (messageText.contains(("/checkname"))) {
+            } else if (messageText.contains("/checkname")) {
                 builder.text(externalService.checkByDBServerName(messageText.substring(11)));
+            } else if (messageText.contains("/chartId")) {
+                builder.text("ID Канала : " + chatId);
             } else {
                 builder.text("Я вас не понимаю");
             }

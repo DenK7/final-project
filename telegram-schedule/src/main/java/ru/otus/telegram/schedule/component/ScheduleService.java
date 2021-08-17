@@ -1,5 +1,6 @@
 package ru.otus.telegram.schedule.component;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import ru.otus.telegram.data.model.CheckResult;
@@ -19,7 +20,7 @@ public class ScheduleService {
         this.proxyService = proxyService;
     }
 
-    @Scheduled(fixedDelayString = "5000")
+    @Scheduled(fixedDelayString = "${schedule.seconds}")
     public void checkDB() {
         List<CheckResult> checkResultList = caretakerProxyService.checkAll().getBody();
         assert checkResultList != null;
@@ -28,7 +29,8 @@ public class ScheduleService {
                 String msg = "ВНИМАНИЕ!!! Не отвечает сервер: "
                         + checkResult.getServerName() + "; Host: " + checkResult.getServerHost()
                         + "; Тип базы данных: " + checkResult.getServerType()
-                        + "; Дата проверки: " + checkResult.getCheckDate();
+                        + "; Дата проверки: " + checkResult.getCheckDate()
+                        + "; Ошибка: " + checkResult.getCheckResult();
                 proxyService.sendMessageOnTelegram(msg);
             }
         }

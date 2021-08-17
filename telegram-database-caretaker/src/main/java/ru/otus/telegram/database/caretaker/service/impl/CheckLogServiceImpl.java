@@ -19,7 +19,6 @@ public class CheckLogServiceImpl implements CheckLogService {
 
     private final CheckLogRepositories checkLogRepositories;
     private final CheckLogDto checkLogModelDto;
-    private final SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss");
 
     public CheckLogServiceImpl(CheckLogRepositories checkLogRepositories, CheckLogDto checkLogModelDto) {
         this.checkLogRepositories = checkLogRepositories;
@@ -48,7 +47,7 @@ public class CheckLogServiceImpl implements CheckLogService {
         return getListModelFromListCheckLog(checkLogList);
     }
 
-    private List<CheckLogModel> getListModelFromListCheckLog(List<ru.otus.telegram.database.caretaker.entity.CheckLog> checkLogList) {
+    private List<CheckLogModel> getListModelFromListCheckLog(List<CheckLog> checkLogList) {
         if (checkLogList.isEmpty()) {
             return null;
         }
