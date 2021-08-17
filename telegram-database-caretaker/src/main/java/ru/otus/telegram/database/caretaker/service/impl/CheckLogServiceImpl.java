@@ -9,7 +9,6 @@ import ru.otus.telegram.database.caretaker.entity.CheckLog;
 import ru.otus.telegram.database.caretaker.repositories.CheckLogRepositories;
 import ru.otus.telegram.database.caretaker.service.api.CheckLogService;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

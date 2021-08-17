@@ -46,5 +46,5 @@ public class CheckLogDtoImpl implements CheckLogDto {
                 .isWorking(checkLog.getIsWorking())
                 .checkResult(checkLog.getCheckResult())
                 .build();
-    };
+    }
 }
