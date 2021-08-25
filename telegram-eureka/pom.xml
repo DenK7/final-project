@@ -67,6 +67,8 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
+
+		<finalName>telegram-eureka</finalName>
 	</build>
 
 </project>

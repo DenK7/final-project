@@ -3,4 +3,4 @@ spring:
     name: telegram-zuul
   cloud:
     config:
-      uri: http://localhost:50000
+      uri: http://config:50000

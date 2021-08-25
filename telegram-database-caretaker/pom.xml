@@ -114,6 +114,8 @@
 				</configuration>
 			</plugin>
 		</plugins>
+
+		<finalName>telegram-database-caretaker</finalName>
 	</build>
 
 </project>

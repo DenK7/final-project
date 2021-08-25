@@ -109,6 +109,8 @@
 				</configuration>
 			</plugin>
 		</plugins>
+
+		<finalName>telegram-bot</finalName>
 	</build>
 
 </project>

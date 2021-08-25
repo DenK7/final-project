@@ -1,0 +1,63 @@
+version: '3'
+services:
+  mongo:
+    image: mongo:3.2.4
+    container_name: "mongo"
+    ports:
+      - 27017:27017
+    command: --smallfiles
+
+  eureka:
+    build:
+      context: .\telegram-eureka
+      dockerfile: Dockerfile
+    image: telegram-eureka:latest
+    hostname: telegram-eureka
+    ports:
+      - "8001:8001"
+
+  config:
+    build:
+      context: .\telegram-config
+      dockerfile: Dockerfile
+    image: telegram-config:latest
+    depends_on:
+      - "eureka"
+    ports:
+      - "50000:50000"
+
+  zuul:
+    build:
+      context: .\telegram-zuul
+      dockerfile: Dockerfile
+    image: telegram-zuul:latest
+    depends_on:
+      - "eureka"
+      - "config"
+    ports:
+      - "8090:8090"
+
+  caretaker:
+    build:
+      context: .\telegram-database-caretaker
+      dockerfile: Dockerfile
+    image: telegram-database-caretaker:latest
+    depends_on:
+      - "mongo"
+      - "eureka"
+      - "config"
+      - "zuul"
+    ports:
+      - "8095:8095"
+
+  bot:
+    build:
+      context: .\telegram-bot
+      dockerfile: Dockerfile
+    image: telegram-bot:latest
+    depends_on:
+      - "eureka"
+      - "config"
+      - "zuul"
+    ports:
+      - "8096:8096"

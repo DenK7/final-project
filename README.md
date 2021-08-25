@@ -35,7 +35,11 @@ mongodb, swagger, spring data, feign, eureka, zuul, sleuth
 2. добавил hystrix и его дашборд для некторых методов, изначально добавил его на метод проверки бд, но вставлять нужно подумав, пришлось убрать
 3. добавил zipkin
 4. обернул сервисы в docker 
-5. проверку перевести на spring integration
-6. как вариант убрать проверку по таймеру, поднимать прямые подключения к бд из списка и повесить отправку сообщения на событие - отключение от бд
 
 часть попробую еще прикрутить до сдачи, если буду успевать
+
+
+https://habr.com/ru/post/539564/
+https://habr.com/ru/post/528694/
+https://otus.ru/journal/osobennosti-sozdaniya-telegram-bota-na-java/
+https://javarush.ru/groups/posts/504-sozdanie-telegram-bota-na-java-ot-idei-do-deploja
