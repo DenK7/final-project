@@ -1,0 +1,12 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://telegram-eureka:8001/eureka
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    hostname: telegram-config
+    leaseRenewalIntervalInSeconds: 30
+    leaseExpirationDurationInSeconds: 90
+    instance-id: ${spring.application.name}:${server.port}
+    prefer-ip-address: true
